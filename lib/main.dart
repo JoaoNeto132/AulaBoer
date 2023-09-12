@@ -35,20 +35,20 @@ class _HomeState extends State<Home> {
           SizedBox(height: 200),
           ElevatedButton(
             onPressed: () {
-              //  Navigator.push(context,
-              //     MaterialPageRoute(builder: (BuildContext context) {
-              // return AddBooks();
-              //   }));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (BuildContext context) {
+                return AddBooks();
+              }));
             },
             child: Text("Adicionar"),
           ),
           SizedBox(height: 40),
           ElevatedButton(
             onPressed: () {
-              //  Navigator.push(context,
-              //   MaterialPageRoute(builder: (BuildContext context) {
+              //Navigator.push(context,
+              //MaterialPageRoute(builder: (BuildContext context) {
               // return ListBooks();
-              //  }));
+              // }));
             },
             child: Text("Listar"),
           ),
