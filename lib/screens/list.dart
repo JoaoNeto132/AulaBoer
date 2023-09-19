@@ -1,3 +1,4 @@
+//
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:appcrudsqlite/data/dblivros.dart';
@@ -62,10 +63,10 @@ class _ListLivro extends State<ListLivro> {
                           children: [
                             IconButton(
                                 onPressed: () {
-                                //  Navigator.push(context, MaterialPageRoute(
+                                  //  Navigator.push(context, MaterialPageRoute(
                                   //    builder: (BuildContext context) {
-                                 //   return EditBook(rollno: stuone["roll_no"]);
-                               //   })); //navigate to edit page, pass student roll no to edit
+                                  //   return EditBook(rollno: stuone["roll_no"]);
+                                  //   })); //navigate to edit page, pass student roll no to edit
                                 },
                                 icon: Icon(Icons.edit)),
                             IconButton(
@@ -79,7 +80,8 @@ class _ListLivro extends State<ListLivro> {
                                   print("Data Deleted");
 
                                   ScaffoldMessenger.of(context).showSnackBar(
-                                      SnackBar(content: Text("Livro Apagado!")));
+                                      SnackBar(
+                                          content: Text("Livro Apagado!")));
 
                                   getdata();
                                 },
