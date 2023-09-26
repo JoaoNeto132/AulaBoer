@@ -50,4 +50,6 @@ class DbLivros {
 
     return null;
   }
+
+  getlivro(int rollno) {}
 }
