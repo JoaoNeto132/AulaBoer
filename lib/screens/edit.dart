@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
+
 import 'package:appcrudsqlite/data/dblivros.dart';
 
 class EditarLivro extends StatefulWidget {
@@ -15,9 +17,13 @@ class EditarLivro extends StatefulWidget {
 
 class _EditarLivro extends State<EditarLivro> {
   TextEditingController nome = TextEditingController();
+
   TextEditingController autor = TextEditingController();
+
   TextEditingController genero = TextEditingController();
+
   TextEditingController preco = TextEditingController();
+
   TextEditingController rollno = TextEditingController();
 
   DbLivros mydb = new DbLivros();
@@ -27,14 +33,19 @@ class _EditarLivro extends State<EditarLivro> {
     mydb.open();
 
     Future.delayed(Duration(milliseconds: 500), () async {
-      var data = await mydb.getlivro(widget.rollno);
+      var data = await mydb.getLivro(widget.rollno);
 
       if (data != null) {
-        nome.text = data["Nome"];
-        autor.text = data["Autor"];
-        genero.text = data["Genero"];
-        preco.text = data["Preço"];
+        nome.text = data["nome"];
+
+        autor.text = data["autor"];
+
+        genero.text = data["genero"];
+
+        preco.text = data["preco"];
+
         rollno.text = data["roll_no"].toString();
+
         setState(() {});
       } else {
         print("Não encontrado dados com roll no: " + widget.rollno.toString());
@@ -61,12 +72,6 @@ class _EditarLivro extends State<EditarLivro> {
                 ),
               ),
               TextField(
-                controller: rollno,
-                decoration: InputDecoration(
-                  hintText: "Roll No.",
-                ),
-              ),
-              TextField(
                 controller: autor,
                 decoration: InputDecoration(
                   hintText: "Autor",
@@ -84,10 +89,16 @@ class _EditarLivro extends State<EditarLivro> {
                   hintText: "Preço",
                 ),
               ),
+              TextField(
+                controller: rollno,
+                decoration: InputDecoration(
+                  hintText: "Roll No.",
+                ),
+              ),
               ElevatedButton(
                   onPressed: () {
                     mydb.db.rawInsert(
-                        "UPDATE books SET nome = ?, roll_no = ?, autor = ?, genero=?, preco=? WHERE roll_no = ?",
+                        "UPDATE livro SET nome = ?, autor = ?, genero=?, preco=?, roll_no=?  WHERE roll_no = ?",
                         [
                           nome.text,
                           rollno.text,
